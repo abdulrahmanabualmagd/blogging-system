@@ -25,7 +25,7 @@ module.exports = {
             },
             coverImage: {
                 type: Sequelize.STRING,
-                allowNull: false,
+                allowNull: true,
                 validate: {
                     notEmpty: true,
                 },
