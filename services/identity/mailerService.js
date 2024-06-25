@@ -41,9 +41,6 @@ exports.passwordResetMail = async (email, token) => {
 exports.emailVerificationMail = async (email, token) => {
     //const verificationUrl = `http://${process.env.APP_HOST || 'localhost'}:3000/auth/verify`;
 
-    console.log(email);
-    console.log(token);
-
     const verificationUrl = `http://localhost:3000/auth/activate`;
 
     const result = await transporter.sendMail({

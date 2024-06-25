@@ -47,7 +47,7 @@ exports.registerService = async (data) => {
             },
         });
 
-        if (!roleResult) throw Error("Role Not Found")
+        if (!roleResult) throw Error("Role Not Found");
 
         // Save the user to Database
         const savedUser = await user.save();
@@ -81,7 +81,6 @@ exports.activateAccountService = async (token) => {
         // Init DB
         const db = await dbApplication;
 
-
         // Get Token
         const emailVerificationTokenResult = await db.EmailVerificationToken.repo.getOne({
             where: {
@@ -99,14 +98,18 @@ exports.activateAccountService = async (token) => {
         if (!emailVerificationTokenResult) throw Error("Token Not Found");
 
         // check if the user is already activated his account
-        if (emailVerificationTokenResult.user.status === "active" || emailVerificationTokenResult.user.status === "suspend") throw Error("User Account is Already Activated");
+        if (
+            emailVerificationTokenResult.user.status === "active" ||
+            emailVerificationTokenResult.user.status === "suspend"
+        )
+            throw Error("User Account is Already Activated");
 
         // check the verifcation code
         if (emailVerificationTokenResult.token !== token) throw Error("Invalid Token");
 
         // activate account
         emailVerificationTokenResult.user.status = "active";
-        
+
         emailVerificationTokenResult.user.save();
 
         // Write login to delete the token after activation
@@ -139,6 +142,7 @@ exports.loginService = async (data) => {
                 },
             ],
         });
+
         if (!user) throw new Error("User Not Found");
 
         // check the user status first (must be activa account to be able to log in)
@@ -273,5 +277,25 @@ exports.resetPasswordVerifyTokenService = async (req, res, next) => {
         return "Password Updated Successfully!";
     } catch (err) {
         throw err;
+    }
+};
+
+exports.getAuthenticatedUser = async (decodedToken) => {
+    try {
+        const db = await dbApplication;
+
+        const { email } = decodedToken;
+
+        if (!email) throw Error("Email not Found");
+
+        const user = await db.User.repo.getOne({
+            where: {
+                email,
+            },
+        });
+
+        return user;
+    } catch (err) {
+        throw Error(err.message);
     }
 };
