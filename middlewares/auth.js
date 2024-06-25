@@ -1,27 +1,39 @@
+const {verifyToken} = require('./../utils/tokenUtils')
+
 /*
-    Authenticate the request by checking the token from the authorize bearer
-    If the token is exist and it's valid then we include the decoded value in [req.user]
-    So we check for the user property in the autherize('roleName')
+    - Check & Verify Attached JWT Token
+    - Attach Decoded User to the Req object
 */
 exports.authenticate = (req, res, next) => {
     try {
         // Parse Token from cookie [bearer]
         const headerAuth = req.headers["authorization"];
 
-        if (!headerAuth) throw new Error("Token Not Found!");
+        if (!headerAuth) throw new Error("UNAUTHORIZED! Token Not Found!");
 
         const token = headerAuth.split(" ")[1];
 
         req.user = verifyToken(token);
+
     } catch (err) {
-        return next(err); // pass the error to the next error-handling middleware (not Reqular middleware(The controller))
+        return next(err);
     }
-    next(); // Continue to the next middleware (Reqular Middleware)
+    next();
 };
 
-exports.authorize = (role) => {
+/*
+    - Make sure that the decoded user in the req have at least one of the allowed roles 
+*/
+exports.authorize = (allowedRoles) => {
     return (req, res, next) => {
-        if (!req.user || req.user.role !== role) throw Error("Access Denied : Not Authoriezed");
+        // Make sure user Authenticated and have roles
+        if (!req.user || !Array.isArray(req.user.roles)) return next(new Error("Access Denied: Not Authorized"));
+
+        // Make sure that authenticated user is allowed
+        const hasRole = req.user.roles.some((role) => allowedRoles.includes(role));
+
+        if (!hasRole) return next(new Error("Access Denied: Not Authorized"));
+
         next();
     };
 };
