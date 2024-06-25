@@ -14,7 +14,7 @@ app.use("/auth", require("./routes/identity/authRouters"));
 // Application Routes
 app.use("/author", require("./routes/application/authorPostRoutes"));
 app.use("/category", require("./routes/application/categoryRoutes"));
-// app.use("/saved", require("./routes/application/userSavedPostRoutes"));
+app.use("/savedPost", require("./routes/application/savedPostRoutes"));
 
 // Handlers
 app.all("*", notFoundHandler);

@@ -2,7 +2,6 @@
     Services Responsible for database access and return results to controllers 
 */
 const { dbApplication } = require("./../../config/db");
-const { getAuthenticatedUser } = require("./../identity/authService");
 
 // Get a specific category by ID
 exports.getCategoryService = async (categoryId) => {
