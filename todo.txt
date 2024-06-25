@@ -1,0 +1,3 @@
+configure the reset password system
+authorize middleware => make it take an array of allowed roles and check for them
+authorPost set all the entered categories

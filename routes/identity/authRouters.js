@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const authControllers = require("../controllers/identity/authController");
-const validator = require("./../validators/userValidators");
+const authControllers = require("../../controllers/identity/authController");
+const validator = require("../../validators/userValidators");
 
 // Register Account
 router.post("/register", authControllers.registerController);
