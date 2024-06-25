@@ -103,13 +103,13 @@ class Repository {
 
     // --------------------------------------- [ Update ] ---------------------------------------
     // Update   // Uses the primary key to update the rest of the properties
-    async update(id, data, options = {}) {
+    async update(data, options = {}) {
         try {
-            const [affectedRows] = await this.model.update(data, { where: { id }, ...options });
+            const [affectedRows] = await this.model.update(data, options);
 
             if (affectedRows === 0) return null;
 
-            return await this.getById(id);
+            return await this.getById(data.id);
         } catch (err) {
             throw err;
         }

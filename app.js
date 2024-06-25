@@ -9,7 +9,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.raw());
 
 // Identity Routes
-app.use("/auth", require("./routes/authRouters"));
+app.use("/auth", require("./routes/identity/authRouters"));
+
+// Application Routes
+app.use("/author", require("./routes/application/authorPostRoutes"));
+app.use("/category", require("./routes/application/categoryRoutes"));
+// app.use("/saved", require("./routes/application/userSavedPostRoutes"));
 
 // Handlers
 app.all("*", notFoundHandler);
@@ -18,14 +23,6 @@ app.use(errorHandler);
 app.listen(process.env.PORT, () => {
     console.log(`http://localhost:${process.env.PORT}`);
 });
-
-
-
-
-
-
-
-
 
 /*
     const db = require("./models/index");
