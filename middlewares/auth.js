@@ -8,11 +8,11 @@ exports.authenticate = (req, res, next) => {
     try {
         // Parse Token from cookie [bearer]
         const headerAuth = req.headers["authorization"];
-
+        
         if (!headerAuth) throw new Error("UNAUTHORIZED! Token Not Found!");
-
+        
         const token = headerAuth.split(" ")[1];
-
+        
         req.user = verifyToken(token);
 
     } catch (err) {

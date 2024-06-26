@@ -109,7 +109,7 @@ class Repository {
 
             if (affectedRows === 0) return null;
 
-            return await this.getById(data.id);
+            return await affectedRows;
         } catch (err) {
             throw err;
         }
