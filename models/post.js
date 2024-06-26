@@ -60,6 +60,11 @@ module.exports = (sequelize, DataTypes) => {
                     notEmpty: true,
                 },
             },
+            status: {
+                type: DataTypes.ENUM("draft", "published", "unpublished"),
+                allowNull: false,
+                defaultValue: "draft",
+            },
         },
         {
             sequelize,

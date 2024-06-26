@@ -37,6 +37,11 @@ module.exports = {
                     notEmpty: true,
                 },
             },
+            status: {
+                type: Sequelize.ENUM("draft", "published", "unpublished"),
+                allowNull: false,
+                defaultValue: "draft", 
+            },
             userId: {
                 type: Sequelize.UUID,
                 references: {
