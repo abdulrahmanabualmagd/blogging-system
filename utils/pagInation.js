@@ -5,23 +5,23 @@ const ParsePageAndSize = (page, size) => {
     const SIZE = 5;
 
     // Try to Parse the values
-    page = parseInt(page, 10) || PAGE;
-    size = parseInt(size, 10) || SIZE;
+    const parsedPage = parseInt(page, 10) || PAGE;
+    const parsedSize = parseInt(size, 10) || SIZE;
 
-    return { page, size };
+    return { parsedPage, parsedSize };
 };
 
 // Get Limit & Offset
 exports.getPageInation = (page, size) => {
-    const { parsedPage, ParsedSize } = ParsePageAndSize(page, size);
+    const { parsedPage, parsedSize } = ParsePageAndSize(page, size);
 
-    const limit = ParsedSize ? +ParsedSize : 10;
+    const limit = parsedSize ? +parsedSize : 10;
     const offset = parsedPage ? (parsedPage - 1) * limit : 0;
 
     return { limit, offset };
 };
 
-// Get Paginated Date Response
+// Get Paginated Data Response
 exports.getPagingData = (data, page, limit) => {
     const { parsedPage } = ParsePageAndSize(page);
 
