@@ -4,6 +4,17 @@
 
 const categoryServices = require("./../../services/application/categoryService");
 
+// Get page categories
+exports.getPageCategorysController = async (req, res, next) => {
+    try {
+        // Get User
+        const result = await categoryServices.getPageCategoriesService(req.query.page, req.query.size);
+        res.status(200).json(result);
+    } catch (err) {
+        next(err);
+    }
+};
+
 // Get a specific category by ID
 exports.getCategoryController = async (req, res, next) => {
     try {

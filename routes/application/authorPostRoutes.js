@@ -2,6 +2,9 @@ const router = require("express").Router();
 const { authenticate, authorize } = require("./../../middlewares/auth");
 const authorPostControllers = require("./../../controllers/application/authorPostController");
 
+// Get Page AuthorPost
+router.get("/post/page", authenticate, authorize(["author"]), authorPostControllers.getPageAuthorPostsController);
+
 // Get Post by Id
 router.get("/post/:postId", authenticate, authorize(["author"]), authorPostControllers.getAuthorPostController);
 

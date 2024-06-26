@@ -2,6 +2,29 @@
     Services Responsible for database access and return results to controllers 
 */
 const { dbApplication } = require("./../../config/db");
+const { getPageInation, getPagingData } = require("./../../utils/pagInation");
+
+// Get all categorys for an author
+exports.getPageCategoriesService = async (page, size) => {
+    try {
+        const db = await dbApplication;
+
+        // Calculate the required size and page
+        const { limit, offset } = getPageInation(page, size);
+
+        // Get categories
+        const category = await db.Category.repo.getAndCountAll({
+            limit,
+            offset,
+        });
+
+        if (!category) throw Error("No Category Found");
+
+        return getPagingData(category, page, limit);
+    } catch (error) {
+        throw Error(error.message);
+    }
+};
 
 // Get a specific category by ID
 exports.getCategoryService = async (categoryId) => {

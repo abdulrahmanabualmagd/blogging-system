@@ -4,6 +4,17 @@
 
 const authorPostServices = require("./../../services/application/authorPostService");
 
+// Get page posts for an author
+exports.getPageAuthorPostsController = async (req, res, next) => {
+    try {
+        // Get User
+        const result = await authorPostServices.getPageAuthorPostsService(req.query.page, req.query.size);
+        res.status(200).json(result);
+    } catch (err) {
+        next(err);
+    }
+};
+
 // Get a specific post by ID
 exports.getAuthorPostController = async (req, res, next) => {
     try {
@@ -17,7 +28,6 @@ exports.getAuthorPostController = async (req, res, next) => {
 // Get all posts for an author
 exports.getAllAuthorPostsController = async (req, res, next) => {
     try {
-
         // Get User
         const result = await authorPostServices.getAllAuthorPostsService(req.user);
         res.status(200).json(result);

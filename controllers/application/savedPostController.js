@@ -4,6 +4,17 @@
 
 const savedPostServices = require("../../services/application/savedPostService");
 
+// Get page savedPosts for an savedPost
+exports.getPageSavedPostsController = async (req, res, next) => {
+    try {
+        // Get User
+        const result = await savedPostServices.getPageSavedPostsService(req.query.page, req.query.size);
+        res.status(200).json(result);
+    } catch (err) {
+        next(err);
+    }
+};
+
 // Get a specific savedPost by ID
 exports.getSavedPostController = async (req, res, next) => {
     try {

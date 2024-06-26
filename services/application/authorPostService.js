@@ -3,6 +3,35 @@
 */
 const { dbApplication } = require("./../../config/db");
 const { getAuthenticatedUser } = require("./../identity/authService");
+const { getPageInation, getPagingData } = require("./../../utils/pagInation");
+
+// Get page posts for an author
+exports.getPageAuthorPostsService = async (page, size) => {
+    try {
+        const db = await dbApplication;
+
+        // Calculate the required size and page
+        const { limit, offset } = getPageInation(page, size);
+
+        // Get Authenticated user
+        const user = await getAuthenticatedUser(decodedToken);
+
+        // Get all author posts
+        const authorPost = await db.Post.repo.getAndCountAll({
+            limit,
+            offset,
+            where: {
+                userId: user.id,
+            },
+        });
+
+        if (!authorPost) throw Error("No Post Found");
+
+        return getPagingData(authorPost, page, limit);
+    } catch (error) {
+        throw Error(error.message);
+    }
+};
 
 // Get a specific post by ID
 exports.getAuthorPostService = async (decodedToken, postId) => {
@@ -55,7 +84,7 @@ exports.getAllAuthorPostsService = async (decodedToken) => {
 // Create a new post
 exports.createAuthorPostService = async (decodedToken, data) => {
     // Check Data
-    const { title, summary, content } = data;
+    const { title, summary, content, categories } = data;
     if (!title || !summary || !content) throw Error("Missing arguments");
 
     try {
@@ -77,7 +106,11 @@ exports.createAuthorPostService = async (decodedToken, data) => {
         // Save post
         const savedPost = await post.save();
 
-        return savedPost;
+        // if (categories.length > 0) {
+        //     const postCategoryResult = await db.Post.repo.addAssociations(post, categories, "Category");
+        // }
+
+        return { savedPost };
     } catch (error) {
         throw Error(error.message);
     }

@@ -3,6 +3,34 @@
 */
 const { dbApplication } = require("../../config/db");
 const { getAuthenticatedUser } = require("../identity/authService");
+const { getPageInation, getPagingData } = require("./../../utils/pagInation");
+
+exports.getPageSavedPostsService = async (decodedToken) => {
+    try {
+        const db = await dbApplication;
+
+        // Calculate the required size and page
+        const { limit, offset } = getPageInation(page, size);
+
+        // Get Authenticated user
+        const user = await getAuthenticatedUser(decodedToken);
+
+        // Get all savedPost posts
+        const savedPost = await db.SavedPost.repo.getAndCountAll({
+            limit,
+            offset,
+            where: {
+                userId: user.id,
+            },
+        });
+
+        if (!savedPost) throw Error("No SavedPost Found");
+
+        return getPagingData(savedPost, page, limit);;
+    } catch (error) {
+        throw Error(error.message);
+    }
+};
 
 // Get a specific savedPost by ID
 exports.getSavedPostService = async (decodedToken, postId) => {
@@ -95,7 +123,6 @@ exports.deleteSavedPostService = async (decodedToken, postId) => {
         });
 
         return result;
-
     } catch (error) {
         throw Error(error.message);
     }
