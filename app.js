@@ -9,12 +9,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.raw());
 
 // Identity Routes
-app.use("/auth", require("./routes/identity/authRouters"));
+app.use("/auth", require("./routes/identity/authRoutes"));
 
 // Application Routes
 app.use("/author", require("./routes/application/authorPostRoutes"));
 app.use("/category", require("./routes/application/categoryRoutes"));
 app.use("/savedPost", require("./routes/application/savedPostRoutes"));
+app.use("/timeline", require("./routes/application/timelineRoutes"));
 
 // Handlers
 app.all("*", notFoundHandler);
