@@ -1,12 +1,12 @@
 /*
     Services Responsible for database access and return results to controllers 
 */
-const { dbApplication } = require("./../../config/db");
-const { getAuthenticatedUser } = require("./../identity/authService");
-const { getPageInation, getPagingData } = require("./../../utils/pagInation");
+const { dbApplication } = require("../../config/db");
+const { getAuthenticatedUser } = require("../identity/authService");
+const { getPageInation, getPagingData } = require("../../utils/pagInation");
 
 // Get page posts for an author
-exports.getPageAuthorPostsService = async (page, size) => {
+exports.getPageAuthorPostsService = async (decodedToken, page, size) => {
     try {
         const db = await dbApplication;
 
@@ -84,7 +84,7 @@ exports.getAllAuthorPostsService = async (decodedToken) => {
 // Create a new post
 exports.createAuthorPostService = async (decodedToken, data) => {
     // Check Data
-    const { title, summary, content, categories } = data;
+    const { title, summary, content, categories, status } = data;
     if (!title || !summary || !content) throw Error("Missing arguments");
 
     try {
@@ -101,14 +101,16 @@ exports.createAuthorPostService = async (decodedToken, data) => {
             content,
             coverImage: data.coverImage || "N/A",
             userId: user.id,
+            status,
         });
 
         // Save post
         const savedPost = await post.save();
 
-        // if (categories.length > 0) {
-        //     const postCategoryResult = await db.Post.repo.addAssociations(post, categories, "Category");
-        // }
+        const categoriesIds = categories.map((c) => c.id);
+
+        // Add Categories to the Post
+        const postCategoryResult = await post.addCategories(categoriesIds);
 
         return { savedPost };
     } catch (error) {
@@ -125,7 +127,7 @@ exports.updateAuthorPostService = async (decodedToken, data) => {
         // Init database
         const db = await dbApplication;
 
-        const user = getAuthenticatedUser(decodedToken);
+        const user = await getAuthenticatedUser(decodedToken);
 
         const updatedPost = await db.Post.repo.update(data, {
             where: {
@@ -159,6 +161,68 @@ exports.deleteAuthorPostService = async (decodedToken, postId) => {
         });
 
         return result;
+    } catch (error) {
+        throw Error(error.message);
+    }
+};
+
+// publish a post
+exports.publishAuthorPostService = async (decodedToken, id) => {
+    // Check for missings
+    if (!decodedToken || !id) throw Error("Missing Requirements");
+
+    try {
+        // Init database
+        const db = await dbApplication;
+
+        const user = await getAuthenticatedUser(decodedToken);
+
+        const updatedPost = await db.Post.repo.update(
+            {
+                status: "published",
+            },
+            {
+                where: {
+                    id: id,
+                    userId: user.id,
+                },
+            }
+        );
+
+        if (!updatedPost) throw Error("Post Not Fount or Record not Effected");
+
+        return { message: "Post Published Successfully" };
+    } catch (error) {
+        throw Error(error.message);
+    }
+};
+
+// unpublish a post
+exports.unpublishAuthorPostService = async (decodedToken, id) => {
+    // Check for missings
+    if (!decodedToken || !id) throw Error("Missing Requirements");
+
+    try {
+        // Init database
+        const db = await dbApplication;
+
+        const user = await getAuthenticatedUser(decodedToken);
+
+        const updatedPost = await db.Post.repo.update(
+            {
+                status: "unpublished",
+            },
+            {
+                where: {
+                    id: id,
+                    userId: user.id,
+                },
+            }
+        );
+
+        if (!updatedPost) throw Error("Post Not Fount or Record not Effected");
+
+        return { message: "Post Unpublished Successfully" };
     } catch (error) {
         throw Error(error.message);
     }

@@ -8,7 +8,7 @@ exports.registerController = async (req, res, next) => {
         const result = await authServices.registerService(req.body);
         
         // Mail token
-        const emailResult = await mailer.emailVerificationMail(result.savedUser.email, result.verificationTokenResult.token);
+        // const emailResult = await mailer.emailVerificationMail(result.savedUser.email, result.verificationTokenResult.token);
         res.status(201).json({ result, emailResult });
     } catch (err) {
         next(err);

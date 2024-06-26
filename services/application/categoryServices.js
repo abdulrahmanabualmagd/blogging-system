@@ -1,8 +1,8 @@
 /*
     Services Responsible for database access and return results to controllers 
 */
-const { dbApplication } = require("./../../config/db");
-const { getPageInation, getPagingData } = require("./../../utils/pagInation");
+const { dbApplication } = require("../../config/db");
+const { getPageInation, getPagingData } = require("../../utils/pagInation");
 
 // Get all categorys for an author
 exports.getPageCategoriesService = async (page, size) => {

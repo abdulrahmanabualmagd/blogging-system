@@ -2,13 +2,13 @@
     Controllers only responsible for the final responses, the services are responsible for the databbase access
 */
 
-const authorPostServices = require("./../../services/application/authorPostService");
+const authorPostServices = require("../../services/application/authorPostServices");
 
 // Get page posts for an author
 exports.getPageAuthorPostsController = async (req, res, next) => {
     try {
         // Get User
-        const result = await authorPostServices.getPageAuthorPostsService(req.query.page, req.query.size);
+        const result = await authorPostServices.getPageAuthorPostsService(req.user, req.query.page, req.query.size);
         res.status(200).json(result);
     } catch (err) {
         next(err);
@@ -61,6 +61,25 @@ exports.deleteAuthorPostController = async (req, res, next) => {
     try {
         const result = await authorPostServices.deleteAuthorPostService(req.user, req.params.postId);
         res.status(204).json({ message: "Post deleted successfully", result: result });
+    } catch (err) {
+        next(err);
+    }
+};
+
+// publicsh a post
+exports.publishAuthorPostController = async (req, res, next) => {
+    try {
+        const result = await authorPostServices.publishAuthorPostService(req.user, req.params.id);
+        res.status(200).json(result);
+    } catch (err) {
+        next(err);
+    }
+};
+// publicsh a post
+    exports.unpublishAuthorPostController = async (req, res, next) => {
+    try {
+        const result = await authorPostServices.unpublishAuthorPostService(req.user, req.params.id);
+        res.status(200).json(result);
     } catch (err) {
         next(err);
     }

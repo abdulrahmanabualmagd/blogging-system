@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const authControllers = require("../../controllers/identity/authController");
+const authControllers = require("../../controllers/identity/authControllers");
 const validator = require("../../validators/userValidators");
 
 // Register Account

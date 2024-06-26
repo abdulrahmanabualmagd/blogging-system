@@ -3,9 +3,9 @@
 */
 const { dbApplication } = require("../../config/db");
 const { getAuthenticatedUser } = require("../identity/authService");
-const { getPageInation, getPagingData } = require("./../../utils/pagInation");
+const { getPageInation, getPagingData } = require("../../utils/pagInation");
 
-exports.getPageSavedPostsService = async (decodedToken) => {
+exports.getPageSavedPostsService = async (decodedToken, page, size) => {
     try {
         const db = await dbApplication;
 

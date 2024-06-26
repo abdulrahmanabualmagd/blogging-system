@@ -2,7 +2,7 @@
     Controllers only responsible for the final responses, the services are responsible for the databbase access
 */
 
-const categoryServices = require("./../../services/application/categoryService");
+const categoryServices = require("../../services/application/categoryServices");
 
 // Get page categories
 exports.getPageCategorysController = async (req, res, next) => {

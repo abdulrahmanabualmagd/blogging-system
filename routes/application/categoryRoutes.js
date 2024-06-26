@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { authenticate, authorize } = require("./../../middlewares/auth");
-const categoryControllers = require("./../../controllers/application/categoryController");
+const categoryControllers = require("./../../controllers/application/categoryControllers");
 
 // Get Page Categories
 router.get("/page", authenticate, authorize(["author"]), categoryControllers.getPageCategorysController);

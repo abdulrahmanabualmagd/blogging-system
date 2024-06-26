@@ -2,13 +2,13 @@
     Controllers only responsible for the final responses, the services are responsible for the databbase access
 */
 
-const savedPostServices = require("../../services/application/savedPostService");
+const savedPostServices = require("../../services/application/savedPostServices");
 
 // Get page savedPosts for an savedPost
 exports.getPageSavedPostsController = async (req, res, next) => {
     try {
         // Get User
-        const result = await savedPostServices.getPageSavedPostsService(req.query.page, req.query.size);
+        const result = await savedPostServices.getPageSavedPostsService(req.user, req.query.page, req.query.size);
         res.status(200).json(result);
     } catch (err) {
         next(err);
