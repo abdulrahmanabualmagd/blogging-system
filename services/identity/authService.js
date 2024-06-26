@@ -25,7 +25,7 @@ exports.registerService = async (data) => {
         if (emailduplicationResult) throw new Error("Dublicated Email");
 
         // create the emailverification token
-        const emailVerificationToken = emailTokensUtils.passwordResetToken();
+        const emailVerificationToken = emailTokensUtils.cryptoToken();
 
         // Hash Password
         const { hashedPassword, salt } = await hashPassword(password);
@@ -217,7 +217,7 @@ exports.resetPasswordGetTokenService = async (req, res, next) => {
 
         // Create String Token object
         const passwordResetTokenObject = {
-            token: emailTokensUtils.passwordResetToken(), // Default Bytes[64]
+            token: emailTokensUtils.cryptoToken(), // Default Bytes[64]
             userId: user.id,
             expiresAt: new Date(Date.now() + 1000 * 60 * process.env.RESET_PASSWORD_EXPIRATION),
         };

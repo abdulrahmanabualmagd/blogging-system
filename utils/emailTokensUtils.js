@@ -1,6 +1,6 @@
 const crypto = require("crypto");
 
-exports.passwordResetToken = (bytes = 32) => {
+exports.cryptoToken = (bytes = 32) => {
     return crypto.randomBytes(bytes).toString("hex");
 };
 
