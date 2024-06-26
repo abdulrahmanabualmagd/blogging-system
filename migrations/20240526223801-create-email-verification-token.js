@@ -8,7 +8,7 @@ module.exports = {
         await queryInterface.createTable("email_verification_tokens", {
             id: {
                 type: Sequelize.UUID,
-                defaultValue: uuidv4(),
+                defaultValue: uuidv4,
                 primaryKey: true,
                 allowNull: false,
             },

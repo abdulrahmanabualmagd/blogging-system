@@ -5,7 +5,6 @@ const path = require("path");
 const Sequelize = require("sequelize");
 const process = require("process");
 require("dotenv").config();
-const { v4: uuidv4 } = require("uuid");
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || "development";
 const config = require("./../config/config")[env];
@@ -42,7 +41,7 @@ module.exports = async () => {
             );
         })
         .map(async (file) => {
-            const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes, uuidv4);
+            const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
             db[model.name] = model;
             db[model.name].repo = new Repository(model); // Repository
         });

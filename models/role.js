@@ -1,6 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
-module.exports = (sequelize, DataTypes, uuidv4) => {
+const { v4: uuidv4 } = require("uuid");
+module.exports = (sequelize, DataTypes) => {
     class Role extends Model {
         static associate(models) {
             // User (we include the ref 'roleId' in the junction table [ManyToMany])
@@ -24,7 +25,7 @@ module.exports = (sequelize, DataTypes, uuidv4) => {
         {
             id: {
                 type: DataTypes.UUID,
-                defaultValue: uuidv4(),
+                defaultValue: uuidv4,
                 primaryKey: true,
                 allowNull: false,
             },

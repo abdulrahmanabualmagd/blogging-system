@@ -8,7 +8,7 @@ module.exports = {
         await queryInterface.createTable("roles", {
             id: {
                 type: Sequelize.UUID,
-                defaultValue: uuidv4(),
+                defaultValue: uuidv4,
                 primaryKey: true,
                 allowNull: false,
             },

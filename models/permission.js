@@ -1,6 +1,7 @@
 "use strict";
 const { Model } = require("sequelize");
-module.exports = (sequelize, DataTypes, uuidv4) => {
+const { v4: uuidv4 } = require("uuid");
+module.exports = (sequelize, DataTypes) => {
     class Permission extends Model {
         static associate(models) {
             Permission.belongsToMany(models.Role, {
@@ -15,7 +16,7 @@ module.exports = (sequelize, DataTypes, uuidv4) => {
         {
             id: {
                 type: DataTypes.UUID,
-                defaultValue: uuidv4(),
+                defaultValue: uuidv4,
                 primaryKey: true,
                 allowNull: false,
             },
