@@ -1,0 +1,13 @@
+.hero .btn{
+    background-color: var(--white);
+    color: var(--black);
+    padding: .8rem 2rem;
+    border-radius: .3rem;
+    transition: ease-out 300ms;
+}
+
+.hero .btn:hover{
+    background-color: var(--primary-main);
+    color: var(--white);
+}
+

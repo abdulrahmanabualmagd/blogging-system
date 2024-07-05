@@ -1,0 +1,24 @@
+.contact{
+    background-color: var(--primary-high);
+}
+
+.contact *{
+    color: var(--white);
+}
+
+.contact .btn{
+    background-color: #fcb74f;
+    color: var(--black);
+    padding: .8rem 2rem;
+    border-radius: .3rem;
+    transition: ease-out 300ms;
+}
+
+.contact .btn:hover{
+    background-color: #fac371;
+    color: var(--white);
+}
+
+.contact img{
+    border-radius: .3rem;
+}

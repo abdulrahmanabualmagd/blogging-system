@@ -1,0 +1,27 @@
+:root {
+        /* Primary Color */
+        --primary-main: #7261D8;
+        --primary-low: #E3DEFF;
+        /* --primary-high: #09013B; */
+        --primary-high: #1c2331;
+      
+        /* Secondary Color */
+        --secondary-main: #BDAB95;
+        --secondary-low: #E8E8E8;
+        --secondary-high: #573E22;
+      
+        /* Neutral Color */
+        --neutral-main: #8F8F93;
+        --neutral-high: #1A1A2E;
+        --neutral-mid: #C7C7C7;
+        --neutral-low: #f5eeee;
+        
+        /* Error */
+        --Error-main: #e74c3c; 
+
+        --white:white;
+        --black:black;
+
+        /* States */
+        --primary-main-hover: rgb(54, 135, 240); /* Example hover color for primary elements */
+}

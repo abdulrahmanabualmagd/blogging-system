@@ -1,0 +1,53 @@
+
+/* Container for input and label */
+.input-container {
+    margin-bottom: 1.5rem;
+}
+
+/* Label for the input */
+.input-container label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--label-color, #333);
+}
+
+/* Wrapper for input and icon */
+.input-wrapper {
+    position: relative;
+}
+
+/* Input field styling */
+.input-wrapper input {
+    width: 100%;
+    padding: 0.75rem;
+    padding-right: 2.5rem; /* Add padding for the icon */
+    border: 1px solid var(--input-border-color, #ccc);
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+/* Change border color on focus */
+.input-wrapper input:focus {
+    border-color: var(--input-focus-border-color, #007bff);
+    outline: none;
+}
+
+/* Optional icon inside the input */
+.input-wrapper .input-icon {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: var(--icon-color, #aaa);
+}
+
+/* Error message styling */
+.input-error-message {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--error-color, #d9534f);
+}

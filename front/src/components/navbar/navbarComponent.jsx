@@ -1,0 +1,111 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { AnimatedFade } from "components";
+import "./style.css";
+
+export default function NavbarComponent() {
+    // Navbar Menu List
+    const list = [
+        {
+            name: "Home",
+            path: "/",
+        },
+        {
+            name: "Timeline",
+            path: "/timeline",
+        },
+        {
+            name: "Create Post",
+            path: "/create-post",
+        },
+    ];
+
+    // Navbar Menu State
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    // Toggle Menu
+    function toggleMenu() {
+        setIsMenuOpen(!isMenuOpen);
+        console.log(isMenuOpen);
+    }
+
+    return (
+        // Main Container
+        <AnimatedFade animation="fade-in" className="container-fluid navbar">
+            {/* Navbar Wrapper */}
+            <div className="container min-height-1 d-flex flex-b-c p-3">
+                {/* Logo */}
+                <div className="d-flex flex-c-c child-pr-1">
+                    <Link to="/" className="font-xxl bold italic">
+                        <img src="logo.svg" alt="logo" />
+                    </Link>
+                </div>
+
+                {/* List */}
+                <div className="d-none d-lg-block list">
+                    <ul className="child-px-3 italic d-flex">
+                        {list.map((item, index) => {
+                            return (
+                                <li key={index}>
+                                    <Link to={item.path.toLowerCase()} className="font-lg bottomLineHover colorHover">
+                                        {item.name}
+                                    </Link>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+
+                {/* Auth Area */}
+                <div className="d-none d-lg-block">
+                    <Link to="/login" className="bold italic colorHover">
+                        Login
+                    </Link>
+                    <Link to="/login" className="bold italic btn ml-3 ">
+                        Register
+                    </Link>
+                </div>
+
+                {/* -------------------------------------------------------------------------------- */}
+
+                {/* Menu Button */}
+                <div className="d-mobile-block">
+                    <button onClick={toggleMenu} className="LoginButton d-mobile-block btn font-xxxl px-4 py-1">
+                        ≡
+                    </button>
+                </div>
+
+                {/* Hidden Menu */}
+                <div className={`hiddenMenu w-full h-full ${isMenuOpen ? "showMenu" : "hideMenu"}`}>
+                    {/* Mark */}
+                    <div onClick={toggleMenu} className="t-right m-3 font-xxl bold color-white">
+                        X
+                    </div>
+                    {/* List */}
+                    <div className="container">
+                        <ul className="italic d-flex flex-column child-py-2">
+                            <li className="d-flex flex-b-c py-4">
+                                <Link to="/login" className="font-xxxl white bold btn">
+                                    Login
+                                </Link>
+                                <Link to="/login" className="font-xxxl white bold btn">
+                                    Register
+                                </Link>
+                            </li>
+
+                            {list.map((item, index) => {
+                                return (
+                                    <li key={index}>
+                                        <Link to={item.path.toLowerCase()} className="font-xxxl white bold">
+                                            {item.name}
+                                        </Link>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </AnimatedFade>
+    );
+}
