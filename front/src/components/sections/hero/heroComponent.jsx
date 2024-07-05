@@ -12,7 +12,7 @@ export default function HeroComponent() {
                     tools
                 </div>
                 <div>
-                    <Link className="btn ">Start Now</Link>
+                    <Link className="btn btn-light">Start Now</Link>
                 </div>
             </AnimatedFade>
             <AnimatedFade animation="slide-in-right">

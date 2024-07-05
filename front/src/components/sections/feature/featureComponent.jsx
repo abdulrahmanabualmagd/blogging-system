@@ -14,7 +14,7 @@ export default function FeatureComponent() {
                     tools
                 </div>
                 <div>
-                    <Link className="btn ">Start Now</Link>
+                    <Link className="btn btn-primary">Start Now</Link>
                 </div>
             </AnimatedFade>
         </div>

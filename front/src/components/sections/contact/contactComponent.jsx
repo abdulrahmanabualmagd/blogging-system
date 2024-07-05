@@ -14,7 +14,7 @@ export default function ContactComponent() {
                         enhancing it with custom tools
                     </div>
                     <div>
-                        <Link className="btn ">Start Now</Link>
+                        <Link className="btn btn-tertiary">Start Now</Link>
                     </div>
                 </AnimatedFade>
                 <AnimatedFade animation="slide-in-right">

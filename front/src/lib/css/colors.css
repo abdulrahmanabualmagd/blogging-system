@@ -1,14 +1,21 @@
 :root {
         /* Primary Color */
+        --primary-main: #7261D8;
+        --text-primary-main: white;
+        --primary-main-hover: #978bdb;
+
         --primary-high: #09013B;
         --primary-mid: #443a82;
-        --primary-main: #7261D8;
         --primary-low: #E3DEFF;
 
         /* Secondary Color */
         --secondary-main: #BDAB95;
         --secondary-low: #E8E8E8;
         --secondary-high: #573E22;
+
+        --tertiary-main: #fcb74f;
+        --text-tertiary-main: black;
+        --tertiary-main-hover: #b38238;
 
         /* Neutral Color */
         --neutral-high: rgb(26, 26, 46);
@@ -25,6 +32,7 @@
         --link-main: #004fe2;
 
         /* States */
-        --primary-main-hover: #978bdb;
+        --white-hover:rgb(212, 212, 212);
         /* Example hover color for primary elements */
 }
+

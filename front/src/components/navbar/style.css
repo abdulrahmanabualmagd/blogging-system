@@ -7,20 +7,6 @@
     width: 3rem;
 }
 
-.navbar .btn {
-    padding: .6rem 1.2rem;
-    border-radius: .3rem;
-    transition: ease-out 300ms;
-    background-color: var(--white);
-    color: var(--black);
-}
-
-.navbar .btn:hover {
-    background-color: var(--primary-main);
-    color: var(--white);
-}
-
-
 .hiddenMenu {
     position: absolute;
     top: 0;
@@ -28,7 +14,6 @@
     transition: ease-out 300ms;
     z-index: 2;
 }
-
 
 
 .hideMenu {

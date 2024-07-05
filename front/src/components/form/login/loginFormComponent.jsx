@@ -8,8 +8,8 @@ export default function LoginFormComponent() {
             <form className="form w-100">
                 
                 {/* Upper Text */}
-                <div className="uppertext pb-2">
-                    <div className="font-xxxl bold primary-main">Login</div>
+                <div className="uppertext pt-3">
+                    <div className="font-xxxl bold t-primary-main">Login</div>
                     <div className="neutral-main">
                         Does not have an account yet? <Link to="/register" className="link">Sign Up</Link>
                     </div>
@@ -48,7 +48,7 @@ export default function LoginFormComponent() {
 
                     {/* Submit Button */}
                     <div>
-                        <button className="btn">Login</button>
+                        <button className="btn btn-primary w-100">Login</button>
                     </div>
 
                     {/* Divider OR */}
@@ -58,16 +58,16 @@ export default function LoginFormComponent() {
 
                     {/* OAuth Buttons */}
                     <div className="d-flex flex-b-c child-mr-3 ">
-                        <div>
-                            <button className="btn d-flex flex-c-c">
+                        <div> 
+                            <button className="btn btn-primary d-flex flex-c-c py-1">
                                 <img src="google.svg" alt="" />
                                 Google
                             </button>
                         </div>
                         <div>
-                            <button className="btn d-flex flex-c-c">
+                            <button className="btn btn-primary d-flex flex-c-c py-1">
                                 <img src="facebook.svg" alt="" />
-                                Google
+                                Facebook
                             </button>
                         </div>
                     </div>

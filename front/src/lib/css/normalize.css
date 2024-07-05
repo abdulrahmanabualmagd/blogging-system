@@ -29,7 +29,6 @@ body {
 
 li,
 a,
-button,
 input, label {
     cursor: pointer;
     background-color: transparent;

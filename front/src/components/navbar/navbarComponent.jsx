@@ -61,7 +61,7 @@ export default function NavbarComponent() {
                     <Link to="/login" className="bold italic colorHover">
                         Login
                     </Link>
-                    <Link to="/register" className="bold italic btn ml-3 ">
+                    <Link to="/register" className="bold italic btn btn-light ml-3 ">
                         Register
                     </Link>
                 </div>
@@ -70,7 +70,7 @@ export default function NavbarComponent() {
 
                 {/* Menu Button */}
                 <div className="d-mobile-block">
-                    <button onClick={toggleMenu} className="LoginButton d-mobile-block btn font-xxxl px-4 py-1">
+                    <button onClick={toggleMenu} className="LoginButton d-mobile-block btn btn-light px-3 font-xxxl">
                         ≡
                     </button>
                 </div>
@@ -78,17 +78,17 @@ export default function NavbarComponent() {
                 {/* Hidden Menu */}
                 <div className={`hiddenMenu w-full h-full ${isMenuOpen ? "showMenu" : "hideMenu"}`}>
                     {/* Mark */}
-                    <div onClick={toggleMenu} className="t-right m-3 font-xxl bold color-white">
+                    <div onClick={toggleMenu} className="t-right m-3 font-xxl bold t-white">
                         X
                     </div>
                     {/* List */}
                     <div className="container">
                         <ul className="italic d-flex flex-column child-py-2">
                             <li className="d-flex flex-b-c py-4">
-                                <Link to="/login" className="font-xxxl white bold btn">
+                                <Link to="/login" className="font-xxxl bold btn btn-light">
                                     Login
                                 </Link>
-                                <Link to="/register" className="font-xxxl white bold btn">
+                                <Link to="/register" className="font-xxxl bold btn btn-light">
                                     Register
                                 </Link>
                             </li>

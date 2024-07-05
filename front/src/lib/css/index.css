@@ -10,5 +10,6 @@
 @import url('./table.css');
 @import url('./visibility.css');
 @import url('./animations.css');
+@import url('./../ui/index.css');
 @import url('./utilsChild.css');
 @import url('./utils.css');

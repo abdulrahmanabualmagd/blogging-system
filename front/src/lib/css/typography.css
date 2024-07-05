@@ -21,25 +21,30 @@
 }
 
 /* ----------------------------- Color----------------------------- */
-.primary-main{
+.t-primary-main{
   color: var(--primary-main);
 }
-.primary-high{
+.t-primary-high{
   color: var(--primary-high);
 }
-.primary-mid{
+.t-primary-mid{
   color: var(--primary-mid);
 }
+.t-primary-low{
+  color: var(--primary-low);
+}
 
-
-.neutral-high{
+.t-neutral-high{
   color: var(--neutral-high);
 }
-.neutral-main{
+.t-neutral-main{
   color: var(--neutral-main);
 }
-.neutral-mid{
+.t-neutral-mid{
   color: var(--neutral-mid);
+}
+.t-neutral-low{
+  color: var(--neutral-low);
 }
 
 /* ----------------------------- Style ----------------------------- */
@@ -60,12 +65,12 @@
   color: var(--neutral-main);
 }
 
-.color-black{
-  color: balck;
+.t-black{
+  color: var(--black);
 }
 
-.color-white{
-  color: white;
+.t-white{
+  color: var(--white);
 }
 
 
