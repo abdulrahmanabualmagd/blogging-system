@@ -61,7 +61,7 @@ export default function NavbarComponent() {
                     <Link to="/login" className="bold italic colorHover">
                         Login
                     </Link>
-                    <Link to="/login" className="bold italic btn ml-3 ">
+                    <Link to="/register" className="bold italic btn ml-3 ">
                         Register
                     </Link>
                 </div>
@@ -88,7 +88,7 @@ export default function NavbarComponent() {
                                 <Link to="/login" className="font-xxxl white bold btn">
                                     Login
                                 </Link>
-                                <Link to="/login" className="font-xxxl white bold btn">
+                                <Link to="/register" className="font-xxxl white bold btn">
                                     Register
                                 </Link>
                             </li>

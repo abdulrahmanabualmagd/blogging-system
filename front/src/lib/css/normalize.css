@@ -13,7 +13,7 @@ html {
 
 @media screen and (min-width: 320px) {
     html {
-        font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+        font-size: calc(16px + 6 * ((85vw - 320px) / 680));
     }
 }
 
@@ -29,14 +29,15 @@ body {
 
 li,
 a,
-button {
+button,
+input, label {
     cursor: pointer;
     background-color: transparent;
     color: black;
     border: 0;
 }
 
-ul{
+ul {
     padding: 0;
 }
 

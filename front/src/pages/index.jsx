@@ -1,6 +1,7 @@
+export { default as HomePage } from "./home/homePage";
+export { default as NotFoundPage } from "./notFound/notFoundPage";
 export { default as CreatePostPage } from "./createPost/CreatePostPage";
 export { default as EmailVerificationPage } from "./emailVerification/emailVerificationPage";
-export { default as HomePage } from "./home/homePage";
 export { default as LoginPage } from "./login/loginPage";
 export { default as ManagePostPage } from "./managePost/managePostPage";
 export { default as PasswordResetPage } from "./passwordReset/passwordResetPage";

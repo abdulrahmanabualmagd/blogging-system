@@ -1,5 +1,6 @@
 import {
     HomePage,
+    NotFoundPage,
     CreatePostPage,
     EmailVerificationPage,
     LoginPage,
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <HomePage />,
+        errorElement: <NotFoundPage />,
     },
     {
         path: "/create-post",

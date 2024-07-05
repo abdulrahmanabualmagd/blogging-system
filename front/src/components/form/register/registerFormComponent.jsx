@@ -1,17 +1,15 @@
 import { Link } from "react-router-dom";
-import "./style.css";
 
-export default function LoginFormComponent() {
+export default function RegisterFormComponent() {
     return (
         // Form Container
         <div className="d-flex flex-c-c form-container">
             <form className="form w-100">
-                
                 {/* Upper Text */}
                 <div className="uppertext pb-2">
-                    <div className="font-xxxl bold primary-main">Login</div>
+                    <div className="font-xxxl bold primary-main">Register</div>
                     <div className="neutral-main">
-                        Does not have an account yet? <Link to="/register" className="link">Sign Up</Link>
+                        Already have an account? <Link to="/login" className="link">Login</Link>
                     </div>
                 </div>
 
@@ -48,12 +46,12 @@ export default function LoginFormComponent() {
 
                     {/* Submit Button */}
                     <div>
-                        <button className="btn">Login</button>
+                        <button className="btn">Register</button>
                     </div>
 
                     {/* Divider OR */}
                     <div>
-                        <div className="h-lines d-flex flex-c-c w-100 neutral-main">Or Login With</div>
+                        <div className="h-lines d-flex flex-c-c w-100 neutral-main">Or Sign Up With</div>
                     </div>
 
                     {/* OAuth Buttons */}

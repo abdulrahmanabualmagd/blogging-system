@@ -1,5 +1,5 @@
 :root{
-  --animation-duration: 1s;
+  --animation-duration: 800ms;
   --animation-transition: ease-out;
 }
 

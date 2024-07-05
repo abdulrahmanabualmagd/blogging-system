@@ -16,7 +16,7 @@ export default function HeroComponent() {
                 </div>
             </AnimatedFade>
             <AnimatedFade animation="slide-in-right">
-                <img src="registeration.svg" alt="" />
+                <img src="hero.svg" alt="" />
             </AnimatedFade>
         </div>
     );
