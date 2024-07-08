@@ -1,6 +1,7 @@
-:root{
-  --animation-duration: 800ms;
+:root {
+  --animation-duration: 500ms;
   --animation-transition: ease-out;
+  --animation-translation: 30%
 }
 
 /* Entrance Animations */
@@ -34,7 +35,7 @@
 
 @keyframes slideUp {
   from {
-    transform: translateY(50%);
+    transform: translateY(var(--animation-translation));
     opacity: 0;
   }
 
@@ -50,7 +51,7 @@
 
 @keyframes slideLeft {
   from {
-    transform: translateX(100%);
+    transform: translateX(var(--animation-translation));
     opacity: 0;
   }
 
@@ -66,7 +67,7 @@
 
 @keyframes slideDown {
   from {
-    transform: translateY(-100%);
+    transform: translateY(calc(-1 * var(--animation-translation)));
     opacity: 0;
   }
 
@@ -158,7 +159,7 @@
 /* Slide in from left */
 @keyframes slideInLeft {
   from {
-    transform: translateX(-100%);
+    transform: translateX(calc(-1 * var(--animation-translation)));
     opacity: 0;
   }
 
@@ -176,7 +177,7 @@
 /* Slide in from right */
 @keyframes slideInRight {
   from {
-    transform: translateX(100%);
+    transform: translateX(var(--animation-translation));
     opacity: 0;
   }
 
@@ -198,7 +199,7 @@
   }
 
   to {
-    transform: translateX(-100%);
+    transform: translateX(calc(-1 * var(--animation-translation)));
     opacity: 0;
   }
 }
@@ -215,7 +216,7 @@
   }
 
   to {
-    transform: translateX(100%);
+    transform: translateX(var(--animation-translation));
     opacity: 0;
   }
 }

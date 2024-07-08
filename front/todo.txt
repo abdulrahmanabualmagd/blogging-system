@@ -1,0 +1,5 @@
+configure the reset password system
+add Categories to Post (AddAssociations)
+update the 'createAuthorPostService' make it insert null if the imageCover is not existed after modifying the database  
+handle username duplication in the application level like what we did to user email
+modify user status enum and all identity models enum like we did in post status (correct format)
