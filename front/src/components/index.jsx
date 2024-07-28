@@ -7,3 +7,4 @@ export { default as ContactComponent } from "./sections/contact/contactComponent
 export { default as AnimatedFade } from "./animatedFade/animatedFade";
 export { default as LoginFormComponent } from "./form/login/loginFormComponent";
 export { default as RegisterFormComponent } from "./form/register/registerFormComponent";
+export { default as BreadcrumbComponent } from "./breadcrumb/breadcrumbComponent";

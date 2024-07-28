@@ -1,7 +1,7 @@
 /* 
     - Move label to the top
     - Translate the underline
-    - classes => [form, input-container, label, underline, h-lines, inputError] 
+    - classes => [form, form-container, input-container, label, underline, h-lines, inputError] 
 */
 
 .form-container{
@@ -26,7 +26,6 @@
 .form .input-container {
     width: 100%;
     position: relative;
-    margin: 3.5rem 0;
 }
 
 /* Normalize CSS Input */
