@@ -1,3 +1,6 @@
+// this file to customize the material ui theme and use it as an argument for the theme provider 
+// Not used because I'm using pure css 
+
 import { createTheme } from "@mui/material";
 
 export const theme = createTheme({

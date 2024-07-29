@@ -9,6 +9,8 @@ import {
     RegisterPage,
     TimelinePage,
 } from "pages";
+// I'm using aliases here 'pages' in vite.config.js file
+
 import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
