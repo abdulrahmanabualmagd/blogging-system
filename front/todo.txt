@@ -4,8 +4,10 @@ I set aliases for (contexts, pages, components, utils, routes, style, my css)
 I set routes using {createBrowserRouter} and used <RouterProvider router={value of the createBrowserRouter}
 
 I Created the authContext that provides method for login(add token to cookies) and logout(remove token from cookies) and check for token existance in the cookies and provide it for all childrens
+    - import the authcontext on component that want to use login/logout methods and want to use the token 
+    - PrivateRoute checks for the token in the cookies 
 
-I set private routes
+I set private route must be within the AuthProvider that have the auth context to be able to access the authToken
 
 Use Validator for form validation and complete login/register forms
 Setup auxios for making http requests with the back server and Complete the login/register operation
